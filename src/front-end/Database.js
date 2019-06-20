@@ -51,7 +51,7 @@ let dbObj = {
 
 export function openDB() {
   return new Promise((resolve, reject) => {
-    let request = indexedDB.open('ledger', 12);
+    let request = indexedDB.open('ledger', 13);
 
     request.onerror = function (event) {
       alert('Database error.');
