@@ -41,7 +41,8 @@ module.exports = {
   devtool: "source-map",
   target: "web",
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    // contentBase: path.join(__dirname, 'public'),
+    publicPath: '/public/',
     compress: true,
     port: 9000,
     historyApiFallback: true,
