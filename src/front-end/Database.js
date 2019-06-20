@@ -60,8 +60,8 @@ export function openDB() {
 
     request.onupgradeneeded = function (event) {
       dbObj.db = event.target.result;
-      dbObj.db.deleteObjectStore('item');
-      dbObj.db.deleteObjectStore('item_type');
+      // dbObj.db.deleteObjectStore('item');
+      // dbObj.db.deleteObjectStore('item_type');
 
       let itemsObjectStore = dbObj.db.createObjectStore('item', { autoIncrement: true });
       itemsObjectStore.createIndex('createDate', 'createDate', { unique: false });
