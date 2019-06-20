@@ -1,0 +1,61 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import './_setting.scss';
+@import './_button.scss';
+@import './_input.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  width: calc(100% - #{$sidebarWidth});
+  height: calc(100vh - #{$headerHeight});
+  margin-left: $sidebarWidth;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@media all and (max-width:576px) {
+  .container {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media all and (max-width:576px) {
+  html {
+    font-size: 10px;
+  }
+}

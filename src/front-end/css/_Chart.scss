@@ -1,0 +1,11 @@
+.chart-panel {
+  width: calc(50% - 20px);
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+@media all and (max-width:1080px) {
+  .chart-panel {
+    width: 100%;
+  }
+}

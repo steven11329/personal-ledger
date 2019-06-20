@@ -1,0 +1,57 @@
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  height: 3em;
+  color: #aaa;
+  background-color: white;
+  border: 3px solid #aaa;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin: 0 20px;
+
+  &:hover {
+    color: white;
+    background-color: #aaa;
+  }
+
+  &:active {
+    background-color: #888;
+  }
+
+  &__name {
+    margin-left: 5px;
+  }
+
+  &--lightblue {
+    color: dodgerblue;
+    background-color: white;
+    border: 3px solid dodgerblue;
+
+    &:hover {
+      color: white;
+      background-color: dodgerblue;
+    }
+
+    &:active {
+      background-color: rgb(29, 125, 221);
+    }
+
+    &--lightgreen {
+      color: forestgreen;
+      background-color: white;
+      border: 3px solid forestgreen;
+
+      &:hover {
+        color: white;
+        background-color: forestgreen;
+      }
+
+      &:active {
+        background-color: rgb(30, 122, 30);
+      }
+    }
+  }
+}

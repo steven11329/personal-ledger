@@ -1,0 +1,52 @@
+@import './setting.scss';
+
+.sidebar {
+  position: fixed;
+  background-color: #eee;
+  width: $sidebarWidth;
+  height: calc(100vh - #{$headerHeight});
+  padding: 20px;
+  z-index: 100;
+
+  ul {
+    padding: 0;
+    a {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+
+  &__item {
+    &:hover {
+      color: white;
+    }
+
+    li {
+      cursor: pointer;
+      list-style-type: none;
+      padding: 10px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $headerBackgroundColor;
+      }
+    }
+  }
+
+  &__item--selected {
+    color: white;
+
+    li {
+      background-color: $headerBackgroundColor;
+    }
+  }
+}
+
+@media all and (max-width:576px) {
+  .sidebar {
+    display: none;
+    &.show {
+      display: block;
+    }
+  }
+}

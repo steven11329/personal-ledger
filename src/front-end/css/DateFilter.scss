@@ -1,0 +1,29 @@
+@import './setting';
+
+.date-filter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 0 20px;
+
+  .date-filter__datepicker {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 3em;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5em;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+}
+
+@media all and (max-width:1280px) {
+  .date-filter {
+    width: 100%;
+  }
+}
