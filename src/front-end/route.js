@@ -1,4 +1,4 @@
-const prefix = (PRODUCTION) ? 'personal-leger' : '';
+const prefix = (PRODUCTION) ? 'personal-ledger' : '';
 export function getPath(path) {
   return prefix + path;
 }
