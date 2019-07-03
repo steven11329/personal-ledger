@@ -9,7 +9,6 @@ import Sidebar from './Sidebar';
 import Main from './Main';
 import Record from './Record';
 import { SideBarDisplayContext } from './contexts';
-import { getPath } from "./route";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,8 +33,8 @@ class App extends React.Component {
             <Sidebar />
           </SideBarDisplayContext.Provider>
           <main className="container">
-            <Route path={`${getPath('/')}`} exact component={Main} />
-            <Route path={`${getPath('/record')}`} component={Record} />
+            <Route path="" exact component={Main} />
+            <Route path="record" component={Record} />
           </main>
         </Router>
       </React.Fragment>

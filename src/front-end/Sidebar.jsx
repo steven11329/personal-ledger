@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { SideBarDisplayContext } from './contexts';
-import { getPath } from './route';
 
 import './css/Sidebar.scss';
 
@@ -14,13 +13,13 @@ class Sidebar extends React.Component {
         <ul>
           <NavLink
             exact
-            to={`${getPath('/')}`}
+            to="/"
             className="sidebar__item"
             activeClassName="sidebar__item--selected"
           >
             <li>總覽</li>
           </NavLink>
-          <NavLink to={`${getPath('/record')}`} className="sidebar__item" activeClassName="sidebar__item--selected">
+          <NavLink to="/record" className="sidebar__item" activeClassName="sidebar__item--selected">
             <li>帳目記錄</li>
           </NavLink>
         </ul>

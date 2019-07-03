@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -48,9 +48,9 @@ module.exports = (env, argv) => {
         template: 'src/front-end/index.html',
         // filename: path.resolve(__dirname,'index.html')
       }),
-      new webpack.DefinePlugin({
-        PRODUCTION: JSON.stringify(argv.mode === 'production'),
-      })
+      // new webpack.DefinePlugin({
+      //   PRODUCTION: JSON.stringify(argv.mode === 'production'),
+      // })
       // new BundleAnalyzerPlugin()
     ],
     resolve: {
