@@ -35,7 +35,7 @@ class App extends React.Component {
           </SideBarDisplayContext.Provider>
           <main className="container">
             <Route path={getPath('')} exact component={Main} />
-            <Route path={getPath('/record')} component={Record} />
+            <Route path={getPath('record')} component={Record} />
           </main>
         </Router>
       </React.Fragment>

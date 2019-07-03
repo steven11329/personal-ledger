@@ -6,8 +6,10 @@ class ChargeTypesPieChart extends React.Component {
   constructor(props) {
     super(props);
     this.chartDOM = null;
-    this.chart = null;
     this.drawChart = this.drawChart.bind(this);
+    this.state = {
+      chart: null,
+    }
   }
 
   componentDidMount() {
@@ -15,9 +17,10 @@ class ChargeTypesPieChart extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.chart) {
-      this.chart.data.datasets[0].data = this.props.data;
-      this.chart.update();
+    const { chart } = this.state;
+    if (chart) {
+      chart.data.datasets[0].data = this.props.data;
+      chart.update();
     }
   }
 
@@ -64,15 +67,16 @@ class ChargeTypesPieChart extends React.Component {
     import(/* webpackChunkName: "chartjs" */ 'chart.js').then(({ default: ChartJS }) => {
       ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
       import(/* webpackChunkName: "chartjs-plugin-datalabels" */ 'chartjs-plugin-datalabels').then(({ default: ChartDataLabels }) => {
-        ChartJS.plugins.unregister(ChartDataLabels);
-        this.chart = new ChartJS(ctx,
-          {
-            type: 'pie',
-            data,
-            plugins: [ChartDataLabels],
-            options,
-          }
-        );
+        this.setState({
+          chart: new ChartJS(ctx,
+            {
+              type: 'pie',
+              data,
+              plugins: [ChartDataLabels],
+              options,
+            }
+          )
+        });
       });
     });
   }

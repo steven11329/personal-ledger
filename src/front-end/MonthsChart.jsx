@@ -7,15 +7,18 @@ class MonthsChart extends React.Component {
   constructor(props) {
     super(props);
     this.chartDOM = null;
-    this.chart = null;
     this.drawChart = this.drawChart.bind(this);
+    this.state = {
+      chart: null,
+    }
   }
 
   componentDidUpdate() {
-    if(this.chart) {
-      this.chart.data.datasets[0].data = this.props.incomes;
-      this.chart.data.datasets[1].data = this.props.charges;
-      this.chart.update();
+    const { chart } = this.state;
+    if (chart) {
+      chart.data.datasets[0].data = this.props.incomes;
+      chart.data.datasets[1].data = this.props.charges;
+      chart.update();
     }
   }
 
@@ -76,18 +79,20 @@ class MonthsChart extends React.Component {
       }
     }
 
-    import(/* webpackChunkName: "chartjs" */'chart.js').then(({default: ChartJS}) => {
+    import(/* webpackChunkName: "chartjs" */'chart.js').then(({ default: ChartJS }) => {
       ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
-      import(/* webpackChunkName: "chartjs-plugin-datalabels" */ 'chartjs-plugin-datalabels').then(({default: ChartDataLabels}) => {
-        ChartJS.plugins.unregister(ChartDataLabels);
-        this.chart = new ChartJS(ctx,
-          {
-            type: 'bar',
-            data,
-            options,
-          }
-        );
-      }).catch(error => 'An error occurred while loading the component');  
+      import(/* webpackChunkName: "chartjs-plugin-datalabels" */ 'chartjs-plugin-datalabels').then(({ default: ChartDataLabels }) => {
+        this.setState({
+          chart: new ChartJS(ctx,
+            {
+              type: 'bar',
+              data,
+              plugins: [ChartDataLabels],
+              options,
+            }
+          )
+        });
+      }).catch(error => 'An error occurred while loading the component');
     }).catch(error => 'An error occurred while loading the component');
   }
 }

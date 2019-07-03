@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (env, argv) => {
-  console.log(argv.mode === 'production');
   return {
     entry: "./src/front-end/App.jsx",
     output: {

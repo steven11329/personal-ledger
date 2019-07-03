@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
           >
             <li>總覽</li>
           </NavLink>
-          <NavLink to={getPath('/record')} className="sidebar__item" activeClassName="sidebar__item--selected">
+          <NavLink to={getPath('record')} className="sidebar__item" activeClassName="sidebar__item--selected">
             <li>帳目記錄</li>
           </NavLink>
         </ul>
