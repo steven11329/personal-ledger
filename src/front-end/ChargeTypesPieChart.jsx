@@ -2,9 +2,6 @@ import React from 'react';
 
 import './css/MonthsChart.scss';
 
-import ChartJS from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-
 class ChargeTypesPieChart extends React.Component {
   constructor(props) {
     super(props);
@@ -18,8 +15,10 @@ class ChargeTypesPieChart extends React.Component {
   }
 
   componentDidUpdate() {
-    this.chart.data.datasets[0].data = this.props.data;
-    this.chart.update();
+    if (this.chart) {
+      this.chart.data.datasets[0].data = this.props.data;
+      this.chart.update();
+    }
   }
 
   render() {
@@ -31,7 +30,6 @@ class ChargeTypesPieChart extends React.Component {
   }
 
   drawChart() {
-    ChartJS.plugins.unregister(ChartDataLabels);
     let ctx = this.chartDOM;
     let data = {
       labels: ['食', '衣', '住', '行', '娛樂'],
@@ -55,7 +53,7 @@ class ChargeTypesPieChart extends React.Component {
             dataArr.map(data => {
               sum += data;
             });
-            let percentage = parseInt((value * 100 / sum))+ "%";
+            let percentage = parseInt((value * 100 / sum)) + "%";
             return percentage;
           },
           color: 'black',
@@ -63,16 +61,20 @@ class ChargeTypesPieChart extends React.Component {
       }
     }
 
-    ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
-
-    this.chart = new ChartJS(ctx,
-      {
-        type: 'pie',
-        data,
-        plugins: [ChartDataLabels],
-        options,
-      }
-    );
+    import(/* webpackChunkName: "chartjs" */ 'chart.js').then(({ default: ChartJS }) => {
+      ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
+      import(/* webpackChunkName: "chartjs-plugin-datalabels" */ 'chartjs-plugin-datalabels').then(({ default: ChartDataLabels }) => {
+        ChartJS.plugins.unregister(ChartDataLabels);
+        this.chart = new ChartJS(ctx,
+          {
+            type: 'pie',
+            data,
+            plugins: [ChartDataLabels],
+            options,
+          }
+        );
+      });
+    });
   }
 }
 

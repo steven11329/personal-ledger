@@ -3,9 +3,6 @@ import currency from 'currency.js';
 
 import './css/MonthsChart.scss';
 
-import ChartJS from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-
 class MonthsChart extends React.Component {
   constructor(props) {
     super(props);
@@ -15,9 +12,11 @@ class MonthsChart extends React.Component {
   }
 
   componentDidUpdate() {
-    this.chart.data.datasets[0].data = this.props.incomes;
-    this.chart.data.datasets[1].data = this.props.charges;
-    this.chart.update();
+    if(this.chart) {
+      this.chart.data.datasets[0].data = this.props.incomes;
+      this.chart.data.datasets[1].data = this.props.charges;
+      this.chart.update();
+    }
   }
 
   componentDidMount() {
@@ -33,7 +32,6 @@ class MonthsChart extends React.Component {
   }
 
   drawChart() {
-    ChartJS.plugins.unregister(ChartDataLabels);
     let ctx = this.chartDOM;
     let data = {
       labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
@@ -78,15 +76,19 @@ class MonthsChart extends React.Component {
       }
     }
 
-    ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
-
-    this.chart = new ChartJS(ctx,
-      {
-        type: 'bar',
-        data,
-        options,
-      }
-    );
+    import(/* webpackChunkName: "chartjs" */'chart.js').then(({default: ChartJS}) => {
+      ChartJS.defaults.global.defaultFontFamily = `'Noto Sans TC', 'Microsoft JhengHei', sans-serif`;
+      import(/* webpackChunkName: "chartjs-plugin-datalabels" */ 'chartjs-plugin-datalabels').then(({default: ChartDataLabels}) => {
+        ChartJS.plugins.unregister(ChartDataLabels);
+        this.chart = new ChartJS(ctx,
+          {
+            type: 'bar',
+            data,
+            options,
+          }
+        );
+      }).catch(error => 'An error occurred while loading the component');  
+    }).catch(error => 'An error occurred while loading the component');
   }
 }
 
