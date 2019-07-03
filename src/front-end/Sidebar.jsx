@@ -13,13 +13,13 @@ class Sidebar extends React.Component {
         <ul>
           <NavLink
             exact
-            to="/"
+            to=""
             className="sidebar__item"
             activeClassName="sidebar__item--selected"
           >
             <li>總覽</li>
           </NavLink>
-          <NavLink to="/record" className="sidebar__item" activeClassName="sidebar__item--selected">
+          <NavLink to="record" className="sidebar__item" activeClassName="sidebar__item--selected">
             <li>帳目記錄</li>
           </NavLink>
         </ul>
