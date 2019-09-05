@@ -1,6 +1,6 @@
 {
   "name": "personal-ledger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "\"Personal ledger\" is a web application that could record your ledger and only you can see it. It promises you personal privacy. Even the server could not watch your ledger.",
   "main": "./src/back-end/Server.js",
   "author": "Steven Chen",
