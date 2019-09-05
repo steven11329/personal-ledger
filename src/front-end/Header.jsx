@@ -20,8 +20,6 @@ function Header(props) {
     return () => { window.onscroll = null };
   }, []);
 
-  console.log(isSticky);
-
   return (
     <div className={`header${(isSticky) ? ' header--sticky' : ''}`} ref={headerRef}>
       <h1>個人記帳</h1>
