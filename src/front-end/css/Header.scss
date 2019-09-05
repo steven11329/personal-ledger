@@ -9,6 +9,14 @@
   background-color: $headerBackgroundColor;
   padding: 0 20px;
 
+  &--sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+  }
+
   h1 {
     margin: 0;
   }
@@ -50,7 +58,7 @@
   }
 }
 
-@media all and (max-width:576px) {
+@media all and (max-width: $MenuIconMaxWidth) {
   .header {
     &__menu {
       ul {

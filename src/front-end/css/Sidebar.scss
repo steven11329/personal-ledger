@@ -42,7 +42,7 @@
   }
 }
 
-@media all and (max-width:576px) {
+@media all and (max-width: $MenuIconMaxWidth) {
   .sidebar {
     display: none;
     &.show {

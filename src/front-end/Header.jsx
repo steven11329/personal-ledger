@@ -1,30 +1,37 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropsTypes from 'prop-types';
 
 import './css/Header.scss';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleMenuClick = this.handleMenuClick.bind(this);
-  }
+function Header(props) {
+  const headerRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
 
-  handleMenuClick() {
-    this.props.onMenuClick();
-  }
+  useEffect(() => {
+    const sticky = headerRef.current.offsetTop;
+    window.onscroll = () => {
+      if (window.pageYOffset > sticky) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    }
 
-  render() {
-    return (
-      <div className="header">
-        <h1>個人記帳</h1>
-        <nav className="header__menu">
-          <div className="header__mobile-menu-button" onClick={this.handleMenuClick}>
-            <i className="fas fa-bars fa-3x"></i>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+    return () => { window.onscroll = null };
+  }, []);
+
+  console.log(isSticky);
+
+  return (
+    <div className={`header${(isSticky) ? ' header--sticky' : ''}`} ref={headerRef}>
+      <h1>個人記帳</h1>
+      <nav className="header__menu">
+        <div className="header__mobile-menu-button" onClick={props.onMenuClick}>
+          <i className="fas fa-bars fa-2x"></i>
+        </div>
+      </nav>
+    </div>
+  );
 }
 
 Header.propsTypes = {

@@ -28,7 +28,7 @@ a {
   height: calc(100vh - #{$headerHeight});
   margin-left: $sidebarWidth;
   padding: 20px;
-  overflow-y: auto;
+  // overflow-y: auto;
 }
 
 .noselect {
@@ -43,19 +43,18 @@ a {
   -ms-user-select: none;
   /* Internet Explorer/Edge */
   user-select: none;
-  /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+  /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-@media all and (max-width:576px) {
+@media all and (max-width: $MenuIconMaxWidth) {
   .container {
     width: 100%;
     margin-left: 0;
   }
 }
 
-@media all and (max-width:576px) {
-  html {
-    font-size: 10px;
-  }
-}
+// @media all and (max-width: $MenuIconMaxWidth) {
+//   html {
+//     font-size: 12px;
+//   }
+// }
