@@ -11,7 +11,7 @@
     "build": "webpack -p --mode=production"
   },
   "dependencies": {
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.6.0",
     "currency.js": "^1.2.2",
     "koa": "^2.7.0",
